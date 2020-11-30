@@ -1,0 +1,7 @@
+Bus,Type,Direction,Quantity,Price
+n13,Unconditionnal,Up,0.03,42
+n4,Conditionnal,Down,0.01,44
+n10,Conditionnal,Down,0.02,41
+n15,Conditionnal,Up,0.02,41
+n5,Unconditionnal,Down,0.01,40
+n10,Conditionnal,Up,0.03,37
