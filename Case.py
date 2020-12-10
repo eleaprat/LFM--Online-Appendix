@@ -10,8 +10,7 @@ Created on Tue Mar 24 16:36:25 2020
 import pandas as pd
 import sys
 
-
-def system_input(D,G):
+def system_input(SetPoint):
     
     # Read data from the csv files created from the Matpower case files
     baseMVA_csv = pd.read_csv('baseMVA.csv',names=['baseMVA'])
@@ -75,7 +74,7 @@ def system_input(D,G):
         else:
             sys.exit('There is an error in the case data: the susceptance of line {} is equal to zero'.format(l))  
     
-    # Retrieve bus details: generators connected, slack bus, lines starting at this bus and lines ending at this bus
+    # Retrieve bus details: generators connected, power injection, slack bus, lines starting at this bus and lines ending at this bus
     for i in range(nb_bus):
         g_n=[]
         for g in data['generators']:
@@ -92,6 +91,6 @@ def system_input(D,G):
                 i_from.append(l)
             elif nodes[i]==data[l]['to']:
                 i_to.append(l)
-        data[nodes[i]]={'generators':g_n, 'generation':G[i]/baseMVA, 'demand':D[i]/baseMVA, 'ref':ref, 'l_from':i_from, 'l_to':i_to}
+        data[nodes[i]]={'generators':g_n, 'SetPoint':SetPoint[i]/baseMVA, 'ref':ref, 'l_from':i_from, 'l_to':i_to}
     
     return data
